@@ -9,35 +9,35 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+  [DbContext(typeof(StoreContext))]
+  partial class StoreContextModelSnapshot : ModelSnapshot
+  {
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+      modelBuilder
+          .HasAnnotation("ProductVersion", "8.0.6")
+          .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+      SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("API.Entities.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+      modelBuilder.Entity("API.Entities.Product", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Name")
+                      .IsRequired()
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Products");
-                });
+            b.ToTable("Products");
+          });
 #pragma warning restore 612, 618
-        }
     }
+  }
 }
