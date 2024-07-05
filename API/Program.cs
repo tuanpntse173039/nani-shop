@@ -1,11 +1,14 @@
-using Infrastructure.Data;
+using API.Controllers;
 using Microsoft.EntityFrameworkCore;
+using Core.Interfaces;
+using Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration;
 
 // Add services to the container.
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(opts =>
     opts.UseSqlServer(config.GetConnectionString("DefaultConnection"))
@@ -20,8 +23,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-  app.UseSwagger();
-  app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
