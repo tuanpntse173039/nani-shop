@@ -7,10 +7,6 @@ namespace Core.Interfaces
     {
         Task<T?> GetByIdAsync(int id);
         Task<IReadOnlyList<T>> ListAllAsync();  
-
-        // For the case we have more specific queries
-        // We need more the function here and it make more complicated 
-        // Solution => ISpecification<T> pattern
         Task<T?> GetEntityWithSpec(ISpecification<T> spec);
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
     }

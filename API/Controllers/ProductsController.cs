@@ -1,18 +1,14 @@
 using API.DTOs;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
-using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace API.Controllers
 {
-    // [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseApiController
     {
         private readonly IGenericRepository<Product> _productRepo;
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
@@ -33,17 +29,19 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<ProductDTO>>> GetProducts()
         {
-            var spec = new ProductsWithTypeAndBrandSpecification();
-            var products = await _productRepo.ListAsync(spec);
-            
+            ISpecification<Product> spec = new ProductsWithTypeAndBrandSpecification();
+            IReadOnlyList<Product> products = await _productRepo.ListAsync(spec);
+
             return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products));
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id)
         {
             // Product? product = await _productRepo.GetByIdAsync(id);
-            var spec = new ProductsWithTypeAndBrandSpecification(id);
+            ISpecification<Product> spec = new ProductsWithTypeAndBrandSpecification(id);
             Product? product = await _productRepo.GetEntityWithSpec(spec);
             if (product == null)
             {
