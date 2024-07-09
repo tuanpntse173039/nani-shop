@@ -11,7 +11,6 @@ namespace Core.Entities
         public string Name { get; set; } = String.Empty;
 
         [Required]
-        [MaxLength(180)]
         public string Description { get; set; } = String.Empty;
 
         [Column(TypeName = "decimal(18,2)")]
@@ -20,10 +19,10 @@ namespace Core.Entities
         [Required]
         public string PictureUrl { get; set; } = String.Empty;
 
-        public ProductType? ProductType { get; set; }
+        public ProductType ProductType { get; set; } = null!;
         public int ProductTypeId { get; set; }
 
-        public ProductBrand? ProductBrand { get; set; }
+        public ProductBrand ProductBrand { get; set; } = null!;
         public int ProductBrandId { get; set; }
     }
 

@@ -1,16 +1,14 @@
-using API.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
 using Infrastructure.Data;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 var config = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(opts =>
     opts.UseSqlServer(config.GetConnectionString("DefaultConnection"))
@@ -32,6 +30,7 @@ using(var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<StoreContext>();
         await context.Database.MigrateAsync();
+        await StoreContextSeed.SeedAsync(context, loggerFactory);
     }
     catch (Exception ex)
     {
