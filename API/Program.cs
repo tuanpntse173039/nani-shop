@@ -11,22 +11,13 @@ using API.Extenstions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var config = builder.Configuration;
-var services = builder.Services;
-
 // Add services to the container.
-services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-services.AddControllers();
-services.AddDbContext<StoreContext>(opts =>
-    opts.UseSqlServer(config.GetConnectionString("DefaultConnection"))
-);
-services.AddApplicationServices();
-services.AddSwaggerDocumentation();
+builder.Services.AddControllers();
+builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddSwaggerDocumentation();
 
 
 var app = builder.Build();
-
-app.AddSeedData();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -42,8 +33,28 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
+app.UseCors("CorsPolicy");
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+//Seed data
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var serviceProvider = scope.ServiceProvider;
+var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+try
+{
+    var context = serviceProvider.GetRequiredService<StoreContext>();
+    await context.Database.MigrateAsync();
+    await StoreContextSeed.SeedAsync(context, loggerFactory);
+}
+catch (Exception ex)
+{
+    var logger = loggerFactory.CreateLogger<Program>();
+    logger.LogError(ex, "An error occurred during migration");
+}
 
 app.Run();

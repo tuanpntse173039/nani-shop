@@ -1,2 +1,17 @@
-<h1 class="text-center font-normal text-3xl mt-5">Hello world, {{ title }}</h1>
-<mat-slide-toggle class="text-xl">Toggle me!</mat-slide-toggle>
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+  <h2 class="text-center text-4xl font-extrabold dark:text-white">Nani shop</h2>
+  <ul>
+    @for (product of products; track product.name) {
+      <li>
+        {{product.name}}
+      </li>
+    }
+  </ul>
+  <!-- <ul>
+    <li *ngFor="let product of products">
+      {{product.name}}
+    </li>
+  </ul> -->
+</div>
