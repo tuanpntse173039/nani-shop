@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{8B2C6C56-2D54-4CE8-9660-E9C1974320F4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D7342B6E-BF96-42F9-B803-89D96481ADAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2F0328C6-609B-43D8-8514-DF93FACDFDEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{88F3C895-789A-4688-9F2A-01A5D7D6762D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +18,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8B2C6C56-2D54-4CE8-9660-E9C1974320F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B2C6C56-2D54-4CE8-9660-E9C1974320F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B2C6C56-2D54-4CE8-9660-E9C1974320F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B2C6C56-2D54-4CE8-9660-E9C1974320F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7342B6E-BF96-42F9-B803-89D96481ADAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7342B6E-BF96-42F9-B803-89D96481ADAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7342B6E-BF96-42F9-B803-89D96481ADAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,5 +26,9 @@ Global
 		{2F0328C6-609B-43D8-8514-DF93FACDFDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F0328C6-609B-43D8-8514-DF93FACDFDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F0328C6-609B-43D8-8514-DF93FACDFDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88F3C895-789A-4688-9F2A-01A5D7D6762D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F3C895-789A-4688-9F2A-01A5D7D6762D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F3C895-789A-4688-9F2A-01A5D7D6762D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F3C895-789A-4688-9F2A-01A5D7D6762D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,12 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Core.Interfaces;
 using Infrastructure.Data;
-using API.Helpers;
 using API.Middleware;
-using Microsoft.AspNetCore.Mvc;
-using API.Errors;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using API.Extenstions;
 
 var builder = WebApplication.CreateBuilder(args);
