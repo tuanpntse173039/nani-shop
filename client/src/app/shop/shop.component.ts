@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from './shop.service';
 import { IProduct } from '../shared/models/product';
-import { ListFormat } from 'typescript';
 
 @Component({
   selector: 'app-shop',

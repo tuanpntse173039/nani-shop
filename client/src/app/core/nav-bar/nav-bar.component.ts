@@ -8,4 +8,5 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './nav-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+}
