@@ -37,7 +37,12 @@ namespace API.Controllers
             int totalItems = await _productRepo.CountAsync(countSpec);
 
             IReadOnlyList<ProductDTO> data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products);
-            return Ok(new Pagination<ProductDTO>(productSpecParams.PageIndex, productSpecParams.PageSize, totalItems, data));
+            return Ok(new Pagination<ProductDTO>(
+                productSpecParams.PageIndex,
+                productSpecParams.PageSize,
+                totalItems,
+                data)
+            );
         }
 
         [HttpGet("{id}")]

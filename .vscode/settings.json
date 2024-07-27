@@ -1,0 +1,21 @@
+{
+  "cSpell.words": ["Flowbite"],
+  "sqltools.connections": [
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true,
+        "instanceName": "TuanPNT17"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "tuanpnt17",
+      "database": "nani",
+      "username": "sa",
+      "password": "12345"
+    }
+  ]
+}
