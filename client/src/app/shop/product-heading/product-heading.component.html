@@ -3,7 +3,8 @@
 >
   <!-- Showing -->
   <h2 class="mt-3 text-sm font-normal text-gray-900 sm:text-lg">
-    Showing <span>{{pageSize}}</span> of <span>{{productCount}}</span> products
+    Showing <span>{{ pageSize }}</span> of
+    <span>{{ productCount }}</span> products
   </h2>
 
   <!-- Filters -->
@@ -50,7 +51,7 @@
         />
       </svg>
     </button>
-    <form class="mx-auto w-96">
+    <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm.value)" class="mx-auto w-96">
       <label
         for="default-search"
         class="sr-only mb-2 text-sm font-medium text-gray-900"
@@ -78,14 +79,17 @@
         </div>
         <input
           type="search"
+          name="searchValue"
           id="default-search"
           class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
           placeholder="Search Mockups, Logos..."
           required
+          [(ngModel)]="searchValue"
         />
         <button
           type="submit"
           class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+          [disabled]="!searchForm.form.valid"
         >
           Search
         </button>
@@ -101,22 +105,16 @@
         class="p-2 text-left text-sm font-medium text-gray-500"
         aria-labelledby="sortDropdownButton"
       >
-        <li>
-          <a
-            href="#"
-            class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-          >
-            Increasing price
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-          >
-            Decreasing price
-          </a>
-        </li>
+        @for (sortItem of sortOptions; track $index) {
+          <li (click)="onSelectedSort(sortItem.value)">
+            <a
+              href="#"
+              class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+            >
+              {{ sortItem.display }}
+            </a>
+          </li>
+        }
       </ul>
     </div>
   </div>

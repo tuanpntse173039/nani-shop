@@ -6,7 +6,7 @@
         @for (productType of productTypes; track $index) {
           <li
             class="nav-primary cursor-pointer rounded-md px-4 py-2 text-lg hover:bg-slate-300"
-            [ngClass]="{'bg-slate-300': productType.id === selectedTypeId}"
+            [class.bg-slate-300]="productType.id === shopParams.typeId"
             [value]="productType.id"
             (click)="onTypeSelected(productType.id)"
           >
@@ -21,7 +21,7 @@
         @for (productBrand of productBrands; track $index) {
           <li
             class="cursor-pointer rounded-md px-4 py-2 text-lg hover:bg-slate-300"
-            [ngClass]="{'bg-slate-300': productBrand.id === selectedBrandId}"
+            [class.bg-slate-300]="productBrand.id === shopParams.brandId"
             [value]="productBrand.id"
             (click)="onBrandSelected(productBrand.id)"
           >
@@ -32,23 +32,40 @@
     </div>
   </div>
   <section class="text w-4/5 antialiased">
-    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <div class="relative mx-auto max-w-screen-xl px-4 2xl:px-0">
       <!-- Heading -->
       <app-product-heading
         [productCount]="productCount"
         [pageSize]="products.length"
+        (sortSelected)="onSelectedSort($event)"
+        (handleSearch)="handleSearch($event)"
       />
 
       <!-- Gallery -->
       <div
         class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-3"
       >
-        @for (product of products; track $index) {
+        @for (
+          product of products
+            | paginate
+              : {
+                  itemsPerPage: shopParams.pageSize,
+                  currentPage: shopParams.pageNumber,
+                  totalItems: productCount,
+                };
+          track $index
+        ) {
           <app-product-item [product]="product" />
         }
       </div>
 
       <!-- Pagination -->
+      <pagination-controls
+        (pageChange)="onPageChanged($event)"
+        previousLabel="Prev"
+        nextLabel="Next"
+        
+      ></pagination-controls>
     </div>
   </section>
 </div>
