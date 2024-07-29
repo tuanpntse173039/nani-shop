@@ -1,6 +1,8 @@
+import { environment } from '@/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPagination } from '@shared/models/pagination';
+import { IProduct } from '@shared/models/product';
 import { IProductBranch } from '@shared/models/productBranch';
 import { IProductType } from '@shared/models/productType';
 import { ShopParams } from '@shared/models/shopParams';
@@ -10,9 +12,16 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ShopService {
-  private readonly baseUrl: string = 'http://localhost:5009/api/';
+  private readonly baseUrl: string = environment.baseUrl;
+  private readonly productEndpoint = 'products/';
+  private readonly productTypeEndpoint = 'products/types';
+  private readonly productBrandEndpoint = 'products/brands';
 
   constructor(private http: HttpClient) {}
+
+  getProduct(id: number): Observable<IProduct | null> {
+    return this.http.get<IProduct>(this.baseUrl + this.productEndpoint + id);
+  }
 
   getProducts(shopParams: ShopParams): Observable<IPagination | null> {
     let params = new HttpParams();
@@ -37,7 +46,7 @@ export class ShopService {
     }
 
     return this.http
-      .get<IPagination>(this.baseUrl + 'products', {
+      .get<IPagination>(this.baseUrl + this.productEndpoint, {
         observe: 'response',
         params: params,
       })
@@ -49,10 +58,14 @@ export class ShopService {
   }
 
   getProductTypes(): Observable<IProductType[]> {
-    return this.http.get<IProductType[]>(this.baseUrl + 'products/types');
+    return this.http.get<IProductType[]>(
+      this.baseUrl + this.productTypeEndpoint,
+    );
   }
 
   getProductBrands(): Observable<IProductBranch[]> {
-    return this.http.get<IProductBranch[]>(this.baseUrl + 'products/brands');
+    return this.http.get<IProductBranch[]>(
+      this.baseUrl + this.productBrandEndpoint,
+    );
   }
 }

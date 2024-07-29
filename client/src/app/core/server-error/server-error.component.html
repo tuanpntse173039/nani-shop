@@ -1,0 +1,19 @@
+@if (serverError) {
+  <div class="mt-5">
+    <h4 class="text-3xl font-bold">
+      Internal Server Error - refreshing the page will make the exception
+      disappear
+    </h4>
+    <h5 class="text-lg font-semibold text-red-600">
+      Error: {{ serverError.message }}
+    </h5>
+    <p class="my-2">
+      Note: if you are seeing this then Angular is probably not responsible
+    </p>
+    <p class="mt-4">
+      Following is the track trace - this is where your investigation should
+      start!
+    </p>
+    <code class="text-purple-600">{{ serverError.details }}</code>
+  </div>
+}

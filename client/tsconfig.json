@@ -22,6 +22,8 @@
     "paths": {
       // "@environment/*": ["./src/environments/*"],
       // "@pages/*": ["./src/app/pages/*"],
+      "@/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
       "@shop/*": ["./src/app/shop/*"],
       "@core/*": ["./src/app/core/*"],
       "@shared/*": ["./src/app/shared/*"]

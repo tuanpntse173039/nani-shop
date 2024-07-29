@@ -108,8 +108,7 @@
         @for (sortItem of sortOptions; track $index) {
           <li (click)="onSelectedSort(sortItem.value)">
             <a
-              href="#"
-              class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+              class="group cursor-pointer inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
             >
               {{ sortItem.display }}
             </a>

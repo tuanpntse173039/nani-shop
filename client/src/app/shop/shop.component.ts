@@ -8,7 +8,6 @@ import { ProductHeadingComponent } from '@shop/product-heading/product-heading.c
 import { ProductItemComponent } from '@shop/product-item/product-item.component';
 import { ShopService } from '@shop/shop.service';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
-import { ProductPaginationComponent } from './product-pagination/product-pagination.component';
 
 @Component({
   selector: 'app-shop',
@@ -18,7 +17,6 @@ import { ProductPaginationComponent } from './product-pagination/product-paginat
     ProductHeadingComponent,
     NgClass,
     NgxPaginationModule,
-    ProductPaginationComponent,
     NgFor,
   ],
   templateUrl: './shop.component.html',

@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Flowbite"],
+  "cSpell.words": ["devkit", "Flowbite", "toastr"],
   "sqltools.connections": [
     {
       "mssqlOptions": {

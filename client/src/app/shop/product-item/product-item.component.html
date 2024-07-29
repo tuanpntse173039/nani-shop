@@ -1,13 +1,13 @@
 @if (product) {
   <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
     <div class="h-56 w-full hover:bg-slate-100">
-      <a href="#">
+      <a [routerLink]="['/shop/' + product.id]">
         <img class="mx-auto h-full" src="{{ product.pictureUrl }}" alt="" />
       </a>
     </div>
     <div class="pt-6">
       <a
-        href="#"
+        [routerLink]="['/shop/' + product.id]"
         class="text-lg font-semibold leading-tight text-gray-900 hover:underline"
         >{{ product.name }}</a
       >
@@ -20,7 +20,7 @@
 
       <div class="mt-4 flex items-center justify-between gap-4">
         <p class="text-2xl font-extrabold leading-tight text-gray-900">
-          ${{ product.price }}
+          {{ product.price | currency: "USD" }}
         </p>
 
         <button
