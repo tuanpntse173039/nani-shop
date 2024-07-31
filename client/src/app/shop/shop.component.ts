@@ -22,9 +22,9 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
   templateUrl: './shop.component.html',
 })
 export class ShopComponent implements OnInit {
-  public products: IProduct[] = [];
-  public productTypes: IProductType[] = [];
-  public productBrands: IProductBranch[] = [];
+  public products: IProduct[] | null = null;
+  public productTypes: IProductType[] | null = null;
+  public productBrands: IProductBranch[] | null = null;
   public productCount: number = 0;
   public shopParams: ShopParams = {
     brandId: 0,

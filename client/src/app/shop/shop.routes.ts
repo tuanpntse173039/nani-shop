@@ -4,5 +4,8 @@ import { ShopComponent } from '@shop/shop.component';
 
 export const SHOP_ROUTES: Route[] = [
   { path: '', component: ShopComponent },
-  { path: ':id', component: ProductDetailComponent },
+  {
+    path: ':id',
+    component: ProductDetailComponent,
+  },
 ];

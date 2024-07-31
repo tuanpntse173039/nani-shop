@@ -1,9 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 
 @layer base {
   html,
@@ -23,3 +22,16 @@
     padding: 16px;
   }
 }
+
+.xng-breadcrumb-root {
+  padding: 8px 16px;
+  display: inline;
+  border-radius: 0;
+}
+
+.xng-breadcrumb-trail {
+  margin-bottom: 0;
+  color: blueviolet;
+  font-weight: 500;
+}
+

@@ -6,17 +6,21 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { routes } from '@app/app.routes';
 import { errorInterceptor } from '@core/interceptor/error.interceptor';
 import { provideToastr } from 'ngx-toastr';
+import { loadingInterceptor } from './core/interceptor/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([errorInterceptor])),
+    provideHttpClient(withInterceptors([errorInterceptor, loadingInterceptor])),
     provideToastr({
       timeOut: 7000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: false,
     }),
+    // provideSpinnerConfig({
+    //   type: 'pacman',
+    // }),
   ],
 };

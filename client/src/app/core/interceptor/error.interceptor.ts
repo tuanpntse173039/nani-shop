@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, Observable } from 'rxjs';
+import { catchError, delay, Observable } from 'rxjs';
 
 export function errorInterceptor(
   req: HttpRequest<unknown>,

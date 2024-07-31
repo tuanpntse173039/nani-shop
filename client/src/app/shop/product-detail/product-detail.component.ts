@@ -1,8 +1,8 @@
 import { IProduct } from '@/app/shared/models/product';
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ShopService } from '../shop.service';
-import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,7 +18,6 @@ export class ProductDetailComponent implements OnInit {
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
   ) {}
-
   ngOnInit(): void {
     this.loadProduct();
   }
