@@ -5,6 +5,7 @@ using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 namespace API.Extensions
 {
@@ -15,12 +16,28 @@ namespace API.Extensions
             IConfiguration config
         )
         {
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            //Auto mapper
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+
+            //Redis
+            services.AddSingleton<IConnectionMultiplexer>(c =>
+            {
+                var configuration = ConfigurationOptions.Parse(
+                    config.GetConnectionString("Redis") ?? "localhost", true
+                );
+                return ConnectionMultiplexer.Connect(configuration);
+            });
+            services.AddScoped<IBasketRepository, BasketRepository>();
+
+
+            //DbContext
             services.AddDbContext<StoreContext>(opts =>
                 opts.UseSqlite(config.GetConnectionString("DefaultConnection"))
             );
+
+            //Api Validation Error
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>
@@ -36,6 +53,7 @@ namespace API.Extensions
                 };
             });
 
+            //CORS
             services.AddCors(opt =>
             {
                 opt.AddPolicy(
