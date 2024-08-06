@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using Infrastructure.Data;
-using API.Middleware;
 using API.Extensions;
+using API.Middleware;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
-
 
 var app = builder.Build();
 
@@ -33,8 +32,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
-//Seed data
+//Seed data and apply the migration when running
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 var serviceProvider = scope.ServiceProvider;
@@ -43,7 +41,7 @@ try
 {
     var context = serviceProvider.GetRequiredService<StoreContext>();
     await context.Database.MigrateAsync();
-    await StoreContextSeed.SeedAsync(context, loggerFactory);
+    await StoreContextSeed.SeedAsync(context, loggerFactory); //seed data from csv
 }
 catch (Exception ex)
 {

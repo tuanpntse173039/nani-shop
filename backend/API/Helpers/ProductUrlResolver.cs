@@ -13,7 +13,9 @@ namespace API.Helpers
             _configuration = configuration;
         }
 
-        public string Resolve(Product source, ProductDTO destination, string destMember, ResolutionContext context)
+        public string Resolve(
+            Product source, ProductDTO destination,
+            string destMember, ResolutionContext context)
         {
             if (!string.IsNullOrEmpty(source.PictureUrl))
             {

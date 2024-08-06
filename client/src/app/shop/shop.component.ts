@@ -35,7 +35,7 @@ export class ShopComponent implements OnInit {
     search: '',
   };
 
-  constructor(private shopService: ShopService) {}
+  constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
     this.getProducts();

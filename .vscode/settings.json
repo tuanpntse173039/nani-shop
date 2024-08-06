@@ -2,20 +2,11 @@
   "cSpell.words": ["devkit", "Flowbite", "pacman", "primeng", "toastr"],
   "sqltools.connections": [
     {
-      "mssqlOptions": {
-        "appName": "SQLTools",
-        "useUTC": true,
-        "encrypt": true,
-        "instanceName": "TuanPNT17"
-      },
       "previewLimit": 50,
-      "server": "localhost",
-      "port": 1433,
-      "driver": "MSSQL",
-      "name": "tuanpnt17",
-      "database": "nani",
-      "username": "sa",
-      "password": "12345"
+      "driver": "SQLite",
+      "name": "nani",
+      "database": "${workspaceFolder:nani-shop}/backend/API/nani.db"
     }
-  ]
+  ],
+  "sqltools.useNodeRuntime": true
 }

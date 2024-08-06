@@ -30,13 +30,16 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductDTO>>> GetProducts([FromQuery] ProductSpecParams productSpecParams)
         {
-            ISpecification<Product> spec = new ProductsWithTypeAndBrandSpecification(productSpecParams);
-            ISpecification<Product> countSpec = new ProductsWithFiltersForCountSpecification(productSpecParams);
+            var spec = new ProductsWithTypeAndBrandSpecification(productSpecParams);
 
-            IReadOnlyList<Product> products = await _productRepo.ListAsync(spec);
-            int totalItems = await _productRepo.CountAsync(countSpec);
+            var countSpec = new ProductsWithFiltersForCountSpecification(productSpecParams);
 
-            IReadOnlyList<ProductDTO> data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products);
+            var products = await _productRepo.ListAsync(spec);
+
+            var totalItems = await _productRepo.CountAsync(countSpec);
+
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products);
+
             return Ok(new Pagination<ProductDTO>(
                 productSpecParams.PageIndex,
                 productSpecParams.PageSize,
@@ -51,12 +54,12 @@ namespace API.Controllers
         public async Task<ActionResult<ProductDTO>> GetProduct(int id)
         {
             // Product? product = await _productRepo.GetByIdAsync(id);
-            ISpecification<Product> spec = new ProductsWithTypeAndBrandSpecification(id);
-            Product? product = await _productRepo.GetEntityWithSpec(spec);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            var spec = new ProductsWithTypeAndBrandSpecification(id);
+
+            var product = await _productRepo.GetEntityWithSpec(spec);
+
+            if (product == null) return NotFound();
+
             return Ok(_mapper.Map<Product, ProductDTO>(product));
         }
 

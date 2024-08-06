@@ -6,14 +6,13 @@ namespace Core.Entities
 {
     public class Product : BaseEntity
     {
-        [Required]
         [MaxLength(100)]
         public string Name { get; set; } = String.Empty;
 
         [Required]
+        [MaxLength(180)]
         public string Description { get; set; } = String.Empty;
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
         [Required]
