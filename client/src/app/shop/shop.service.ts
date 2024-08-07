@@ -53,19 +53,15 @@ export class ShopService {
       .pipe(
         map((response) => {
           return response.body;
-        }),
+        })
       );
   }
 
   getProductTypes(): Observable<IProductType[]> {
-    return this.http.get<IProductType[]>(
-      this.baseUrl + this.productTypeEndpoint,
-    );
+    return this.http.get<IProductType[]>(this.baseUrl + this.productTypeEndpoint);
   }
 
   getProductBrands(): Observable<IProductBranch[]> {
-    return this.http.get<IProductBranch[]>(
-      this.baseUrl + this.productBrandEndpoint,
-    );
+    return this.http.get<IProductBranch[]>(this.baseUrl + this.productBrandEndpoint);
   }
 }

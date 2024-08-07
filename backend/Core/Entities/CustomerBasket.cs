@@ -7,15 +7,11 @@ namespace Core.Entities
         public string Id { get; set; } = string.Empty;
         public List<BasketItem> Items { get; set; } = new List<BasketItem>();
 
-        public CustomerBasket()
-        {
-        }
+        public CustomerBasket() { }
 
         public CustomerBasket(string id)
         {
             Id = id;
         }
-
     }
-
 }

@@ -1,8 +1,8 @@
 export interface ShopParams {
-    brandId: number;
-    typeId: number;
-    sort: string;
-    pageNumber: number;
-    pageSize: number;
-    search: string;
+  brandId: number;
+  typeId: number;
+  sort: string;
+  pageNumber: number;
+  pageSize: number;
+  search: string;
 }

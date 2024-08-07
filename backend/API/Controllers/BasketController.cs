@@ -31,10 +31,9 @@ namespace API.Controllers
         public async Task<IActionResult> DeleteCustomerBasket(string id)
         {
             var basket = await _basketRepository.DeleteBasketAsync(id);
-            if (basket) return BadRequest("Update Failed");
+            if (basket)
+                return BadRequest("Update Failed");
             return Ok("Update successfully");
         }
-
     }
-
 }

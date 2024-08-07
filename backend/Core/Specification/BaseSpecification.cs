@@ -16,21 +16,20 @@ namespace Core.Specification
         /// <summary>
         /// Gets the list of include expressions used for eager loading related entities.
         /// </summary>
-        public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
+        public List<Expression<Func<T, object>>> Includes { get; } =
+            new List<Expression<Func<T, object>>>();
 
-        public Expression<Func<T, object>> OrderBy { get; private set;} = null!;
+        public Expression<Func<T, object>> OrderBy { get; private set; } = null!;
 
-        public Expression<Func<T, object>> OrderByDescending { get; private set;} = null!;
+        public Expression<Func<T, object>> OrderByDescending { get; private set; } = null!;
 
-        public int Take { get; private set;}
+        public int Take { get; private set; }
 
-        public int Skip { get; private set;}
+        public int Skip { get; private set; }
 
         public bool IsPagingEnabled { get; private set; }
 
-        public BaseSpecification()
-        {
-        }
+        public BaseSpecification() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseSpecification{T}"/> class with the specified criteria.

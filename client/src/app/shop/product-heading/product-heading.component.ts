@@ -16,8 +16,8 @@ export class ProductHeadingComponent implements OnInit {
   ngOnInit(): void {
     initFlowbite();
   }
-  @Input({ required: true }) productCount: number = 0;
-  @Input({ required: true }) pageSize: number = 0;
+  @Input({ required: true }) productCount = 0;
+  @Input({ required: true }) pageSize = 0;
   public selectedSort: string | undefined;
   public sortOptions: { code: string; name: string }[] = [
     { code: 'name', name: 'Alphabetical' },
@@ -26,7 +26,7 @@ export class ProductHeadingComponent implements OnInit {
   ];
   @Output() sortSelected = new EventEmitter<string>();
   @Output() handleSearch = new EventEmitter<string>();
-  public searchValue: string = '';
+  public searchValue = '';
 
   public onSelectedSort(sortValue: string): void {
     this.sortSelected.emit(sortValue);

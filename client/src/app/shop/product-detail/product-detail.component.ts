@@ -13,12 +13,12 @@ import { ShopService } from '../shop.service';
 })
 export class ProductDetailComponent implements OnInit {
   public product: IProduct | null = null;
-  public quantity: number = 1;
+  public quantity = 1;
 
   constructor(
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
-    private basketService: BasketService,
+    private basketService: BasketService
   ) {}
 
   ngOnInit(): void {

@@ -10,14 +10,22 @@ namespace Core.Specification
     public class ProductsWithTypeAndBrandSpecification : BaseSpecification<Product>
     {
         public ProductsWithTypeAndBrandSpecification(ProductSpecParams productParams)
-            : base(p => (!productParams.BrandId.HasValue || p.ProductBrandId == productParams.BrandId) &&
-                        (!productParams.TypeId.HasValue || p.ProductTypeId == productParams.TypeId) &&
-                        (string.IsNullOrEmpty(productParams.Search) || p.Name.ToLower().Contains(productParams.Search)))
+            : base(p =>
+                (!productParams.BrandId.HasValue || p.ProductBrandId == productParams.BrandId)
+                && (!productParams.TypeId.HasValue || p.ProductTypeId == productParams.TypeId)
+                && (
+                    string.IsNullOrEmpty(productParams.Search)
+                    || p.Name.ToLower().Contains(productParams.Search)
+                )
+            )
         {
             AddInclude(p => p.ProductType);
             AddInclude(p => p.ProductBrand);
             AddOrderBy(p => p.Name);
-            ApplyPaging(productParams.PageSize * (productParams.PageIndex - 1), productParams.PageSize);
+            ApplyPaging(
+                productParams.PageSize * (productParams.PageIndex - 1),
+                productParams.PageSize
+            );
 
             if (!string.IsNullOrEmpty(productParams.Sort))
             {

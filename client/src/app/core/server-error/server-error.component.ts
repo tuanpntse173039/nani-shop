@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './server-error.component.html',
 })
 export class ServerErrorComponent {
-  public serverError: any;
+  public serverError;
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();

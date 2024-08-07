@@ -12,20 +12,14 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [
-    ProductItemComponent,
-    ProductHeadingComponent,
-    NgClass,
-    NgxPaginationModule,
-    NgFor,
-  ],
+  imports: [ProductItemComponent, ProductHeadingComponent, NgClass, NgxPaginationModule, NgFor],
   templateUrl: './shop.component.html',
 })
 export class ShopComponent implements OnInit {
   public products: IProduct[] | null = null;
   public productTypes: IProductType[] | null = null;
   public productBrands: IProductBranch[] | null = null;
-  public productCount: number = 0;
+  public productCount = 0;
   public shopParams: ShopParams = {
     brandId: 0,
     typeId: 0,
@@ -35,7 +29,7 @@ export class ShopComponent implements OnInit {
     search: '',
   };
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService) {}
 
   ngOnInit(): void {
     this.getProducts();

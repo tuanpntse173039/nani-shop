@@ -2,6 +2,7 @@
 using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -25,16 +26,20 @@ namespace API.Extensions
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
                 var configuration = ConfigurationOptions.Parse(
-                    config.GetConnectionString("Redis") ?? "localhost", true
+                    config.GetConnectionString("Redis") ?? "localhost",
+                    true
                 );
                 return ConnectionMultiplexer.Connect(configuration);
             });
             services.AddScoped<IBasketRepository, BasketRepository>();
 
-
             //DbContext
             services.AddDbContext<StoreContext>(opts =>
                 opts.UseSqlite(config.GetConnectionString("DefaultConnection"))
+            );
+
+            services.AddDbContext<AppIdentityDbContext>(opt =>
+                opt.UseSqlite(config.GetConnectionString("IdentityConnection"))
             );
 
             //Api Validation Error

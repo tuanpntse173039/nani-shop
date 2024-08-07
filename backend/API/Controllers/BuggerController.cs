@@ -8,6 +8,7 @@ namespace API.Controllers
     public class BuggerController : BaseApiController
     {
         private readonly StoreContext _storeContext;
+
         public BuggerController(StoreContext storeContext)
         {
             _storeContext = storeContext;
@@ -27,7 +28,8 @@ namespace API.Controllers
         [HttpGet("server-error")]
         public ActionResult GetServerErrorRequest()
         {
-            Product? product = _storeContext.Products.Find(44) ?? throw new Exception("Test Exception");
+            Product? product =
+                _storeContext.Products.Find(44) ?? throw new Exception("Test Exception");
             return Ok(product);
         }
 

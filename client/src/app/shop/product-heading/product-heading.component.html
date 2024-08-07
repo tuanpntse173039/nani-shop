@@ -1,10 +1,11 @@
-<div
-  class="md: mb-4 items-center justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8 md:flex"
->
+<div class="md: mb-4 items-center justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8 md:flex">
   <!-- Showing -->
   <h3 class="mt-3 text-sm font-normal text-gray-900 sm:text-lg">
-    Showing <span>{{ pageSize }}</span> of
-    <span>{{ productCount }}</span> products
+    Showing
+    <span>{{ pageSize }}</span>
+    of
+    <span>{{ productCount }}</span>
+    products
   </h3>
 
   <!-- Filters -->
@@ -13,73 +14,32 @@
       id="sortDropdownButton1"
       data-dropdown-toggle="dropdownSort"
       type="button"
-      class="hover:text-primary-700 flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto"
-    >
-      <svg
-        class="-ms-0.5 me-2 h-4 w-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
+      class="hover:text-primary-700 flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto">
+      <svg class="-ms-0.5 me-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path
           stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M7 4v16M7 4l3 3M7 4 4 7m9-3h6l-6 6h6m-6.5 10 3.5-7 3.5 7M14 18h4"
-        />
+          d="M7 4v16M7 4l3 3M7 4 4 7m9-3h6l-6 6h6m-6.5 10 3.5-7 3.5 7M14 18h4" />
       </svg>
       Sort
-      <svg
-        class="-me-0.5 ms-2 h-4 w-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m19 9-7 7-7-7"
-        />
+      <svg class="-me-0.5 ms-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
       </svg>
     </button>
 
-    <form
-      #searchForm="ngForm"
-      (ngSubmit)="onSearch(searchForm.value)"
-      class="mx-auto w-96"
-    >
-      <label
-        for="default-search"
-        class="sr-only mb-2 text-sm font-medium text-gray-900"
-        >Search</label
-      >
+    <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm.value)" class="mx-auto w-96">
+      <label for="default-search" class="sr-only mb-2 text-sm font-medium text-gray-900">Search</label>
       <div class="relative">
-        <div
-          class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
-        >
-          <svg
-            class="h-4 w-4 text-gray-500 dark:text-gray-400"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
+        <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+          <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path
               stroke="currentColor"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
           </svg>
         </div>
         <input
@@ -89,31 +49,21 @@
           class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
           placeholder="Search Mockups, Logos..."
           required
-          [(ngModel)]="searchValue"
-        />
+          [(ngModel)]="searchValue" />
         <button
           type="submit"
           class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          [disabled]="!searchForm.form.valid"
-        >
+          [disabled]="!searchForm.form.valid">
           Search
         </button>
       </div>
     </form>
-    <div
-      id="dropdownSort"
-      class="z-50 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow"
-      data-popper-placement="bottom"
-    >
-      <ul
-        class="p-2 text-left text-sm font-medium text-gray-500"
-        aria-labelledby="sortDropdownButton"
-      >
+    <div id="dropdownSort" class="z-50 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow" data-popper-placement="bottom">
+      <ul class="p-2 text-left text-sm font-medium text-gray-500" aria-labelledby="sortDropdownButton">
         @for (sortItem of sortOptions; track $index) {
-          <li (click)="onSelectedSort(sortItem.code)">
+          <li (click)="onSelectedSort(sortItem.code)" (keypress)="onSelectedSort(sortItem.code)" role="alert">
             <a
-              class="group inline-flex w-full cursor-pointer items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-            >
+              class="group inline-flex w-full cursor-pointer items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900">
               {{ sortItem.name }}
             </a>
           </li>

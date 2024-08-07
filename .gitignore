@@ -44,3 +44,5 @@ e2e/*.map
 backend/API/nani.db-shm
 backend/API/nani.db-wal
 backend/API/nani.db
+backend/API/identity.db-shm
+backend/API/identity.db-wal

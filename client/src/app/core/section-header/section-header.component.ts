@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-section-header',
@@ -7,6 +7,4 @@ import { Component, OnInit } from '@angular/core';
   imports: [CommonModule],
   templateUrl: './section-header.component.html',
 })
-export class SectionHeaderComponent implements OnInit {
-  ngOnInit(): void {}
-}
+export class SectionHeaderComponent {}

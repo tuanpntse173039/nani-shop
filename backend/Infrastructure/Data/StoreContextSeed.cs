@@ -12,11 +12,12 @@ namespace Infrastructure.Data
             {
                 if (!context.ProductBrands.Any())
                 {
-                    var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
+                    var brandsData = File.ReadAllText(
+                        "../Infrastructure/Data/SeedData/brands.json"
+                    );
                     var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
                     if (brands != null)
                     {
-
                         foreach (var item in brands)
                         {
                             context.ProductBrands.Add(item);
@@ -41,7 +42,9 @@ namespace Infrastructure.Data
 
                 if (!context.Products.Any())
                 {
-                    var productsData = File.ReadAllText("../Infrastructure/Data/SeedData/products.json");
+                    var productsData = File.ReadAllText(
+                        "../Infrastructure/Data/SeedData/products.json"
+                    );
                     var products = JsonSerializer.Deserialize<List<Product>>(productsData);
                     if (products != null)
                     {
@@ -52,7 +55,6 @@ namespace Infrastructure.Data
                         await context.SaveChangesAsync();
                     }
                 }
-
             }
             catch (Exception ex)
             {

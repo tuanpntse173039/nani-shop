@@ -9,14 +9,14 @@ import { Component } from '@angular/core';
   templateUrl: './test-error.component.html',
 })
 export class TestErrorComponent {
-  private resourceNotFoundEndpoint: string = 'bugger/tuan';
-  private productNotFoundEndpoint: string = 'products/134';
-  private serverErrorEndpoint: string = 'bugger/server-error';
-  private badRequestEndpoint: string = 'bugger/bad-request';
-  private badRequestInfoEndpoint: string = 'products/1mot';
+  private resourceNotFoundEndpoint = 'bugger/tuan';
+  private productNotFoundEndpoint = 'products/134';
+  private serverErrorEndpoint = 'bugger/server-error';
+  private badRequestEndpoint = 'bugger/bad-request';
+  private badRequestInfoEndpoint = 'products/1mot';
   private baseUrl: string = environment.baseUrl;
 
-  public errors: any;
+  public errors: undefined;
 
   constructor(private httpClient: HttpClient) {}
   public getBadRequestInfo(): void {
@@ -42,16 +42,14 @@ export class TestErrorComponent {
   }
 
   public getResourceNotFound(): void {
-    this.httpClient
-      .get(this.baseUrl + this.resourceNotFoundEndpoint)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    this.httpClient.get(this.baseUrl + this.resourceNotFoundEndpoint).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   public getProductNotFound(): void {

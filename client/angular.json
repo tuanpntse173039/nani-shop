@@ -29,11 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css",
-              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
-            ],
+            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css", "node_modules/ngx-spinner/animations/ball-scale-multiple.css"],
             "scripts": []
           },
           "configurations": {
@@ -110,11 +106,18 @@
             "styles": ["src/styles.scss"],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }

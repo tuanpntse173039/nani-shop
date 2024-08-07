@@ -25,8 +25,7 @@ export const routes: Routes = [
   },
   {
     path: 'shop',
-    loadChildren: () =>
-      import('@shop/shop.routes').then((mod) => mod.SHOP_ROUTES),
+    loadChildren: () => import('@shop/shop.routes').then((mod) => mod.SHOP_ROUTES),
     data: { breadcrumb: 'Shop' },
   },
   {

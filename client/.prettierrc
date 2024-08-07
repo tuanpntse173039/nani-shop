@@ -1,3 +1,9 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-organize-imports"]
+  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-organize-imports"],
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "endOfLine": "auto",
+  "bracketSameLine": true,
+  "printWidth": 150,
+  "htmlWhitespaceSensitivity": "ignore"
 }

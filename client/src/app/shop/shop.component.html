@@ -10,7 +10,8 @@
               [class.bg-slate-300]="productType.id === shopParams.typeId"
               [value]="productType.id"
               (click)="onTypeSelected(productType.id)"
-            >
+              (keypress)="onTypeSelected(productType.id)"
+              role="alert">
               {{ productType.name }}
             </li>
           }
@@ -24,8 +25,9 @@
               class="cursor-pointer rounded-md px-4 py-2 text-lg hover:bg-slate-300"
               [class.bg-slate-300]="productBrand.id === shopParams.brandId"
               [value]="productBrand.id"
-              (click)="onBrandSelected(productBrand.id)"
-            >
+              (keypress)="onBrandSelected(productBrand.id)"
+              role="alert"
+              (click)="onBrandSelected(productBrand.id)">
               {{ productBrand.name }}
             </li>
           }
@@ -41,13 +43,10 @@
           [productCount]="productCount"
           [pageSize]="products.length"
           (sortSelected)="onSelectedSort($event)"
-          (handleSearch)="handleSearch($event)"
-        />
+          (handleSearch)="handleSearch($event)" />
 
         <!-- Gallery -->
-        <div
-          class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-3"
-        >
+        <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-3">
           @for (
             product of products
               | paginate
@@ -63,11 +62,7 @@
         </div>
 
         <!-- Pagination -->
-        <pagination-controls
-          (pageChange)="onPageChanged($event)"
-          previousLabel="Prev"
-          nextLabel="Next"
-        ></pagination-controls>
+        <pagination-controls (pageChange)="onPageChanged($event)" previousLabel="Prev" nextLabel="Next"></pagination-controls>
       </div>
     }
   </section>

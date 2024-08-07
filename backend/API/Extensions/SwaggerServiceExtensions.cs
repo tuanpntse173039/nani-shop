@@ -9,12 +9,15 @@ namespace API.Extensions
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Nani API",
-                    Description = "An ASP.NET Core Web API for managing Nani shop",
-                });
+                options.SwaggerDoc(
+                    "v1",
+                    new OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "Nani API",
+                        Description = "An ASP.NET Core Web API for managing Nani shop",
+                    }
+                );
             });
 
             return services;

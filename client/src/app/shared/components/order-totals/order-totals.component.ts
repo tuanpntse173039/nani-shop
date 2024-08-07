@@ -1,9 +1,9 @@
 import { BasketService } from '@/app/basket/basket.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IBasketTotals } from '../../models/basket';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-order-totals',

@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "Autoincrement",
     "devkit",
     "Flowbite",
     "pacman",
@@ -13,6 +14,12 @@
       "driver": "SQLite",
       "name": "nani",
       "database": "${workspaceFolder:nani-shop}/backend/API/nani.db"
+    },
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "identity",
+      "database": "${workspaceFolder:nani-shop}/backend/API/identity.db"
     }
   ],
   "sqltools.useNodeRuntime": true

@@ -15,11 +15,13 @@ namespace API.Controllers
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
         private readonly IGenericRepository<ProductType> _productTypeRepo;
         private readonly IMapper _mapper;
+
         public ProductsController(
             IGenericRepository<Product> productRepo,
             IGenericRepository<ProductBrand> productBrandRepo,
             IGenericRepository<ProductType> productTypeRepo,
-            IMapper mapper)
+            IMapper mapper
+        )
         {
             _productTypeRepo = productTypeRepo;
             _productBrandRepo = productBrandRepo;
@@ -28,7 +30,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Pagination<ProductDTO>>> GetProducts([FromQuery] ProductSpecParams productSpecParams)
+        public async Task<ActionResult<Pagination<ProductDTO>>> GetProducts(
+            [FromQuery] ProductSpecParams productSpecParams
+        )
         {
             var spec = new ProductsWithTypeAndBrandSpecification(productSpecParams);
 
@@ -40,11 +44,13 @@ namespace API.Controllers
 
             var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products);
 
-            return Ok(new Pagination<ProductDTO>(
-                productSpecParams.PageIndex,
-                productSpecParams.PageSize,
-                totalItems,
-                data)
+            return Ok(
+                new Pagination<ProductDTO>(
+                    productSpecParams.PageIndex,
+                    productSpecParams.PageSize,
+                    totalItems,
+                    data
+                )
             );
         }
 
@@ -58,7 +64,8 @@ namespace API.Controllers
 
             var product = await _productRepo.GetEntityWithSpec(spec);
 
-            if (product == null) return NotFound();
+            if (product == null)
+                return NotFound();
 
             return Ok(_mapper.Map<Product, ProductDTO>(product));
         }

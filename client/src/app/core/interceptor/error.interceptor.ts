@@ -2,12 +2,9 @@ import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, delay, Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 
-export function errorInterceptor(
-  req: HttpRequest<unknown>,
-  next: HttpHandlerFn,
-): Observable<HttpEvent<unknown>> {
+export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
   const router = inject(Router);
   const toast = inject(ToastrService);
   return next(req).pipe(
@@ -26,10 +23,10 @@ export function errorInterceptor(
         router.navigateByUrl('/not-found');
       }
       if (err.status === 500) {
-        const navigationExtras: NavigationExtras = {state: {error: err.error}};
+        const navigationExtras: NavigationExtras = { state: { error: err.error } };
         router.navigateByUrl('/server-error', navigationExtras);
       }
       throw err;
-    }),
+    })
   );
 }

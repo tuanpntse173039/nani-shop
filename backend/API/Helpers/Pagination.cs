@@ -6,9 +6,9 @@ using AutoMapper.Configuration.Conventions;
 
 namespace API.Helpers
 {
-    public class Pagination<T> where T : class
+    public class Pagination<T>
+        where T : class
     {
-
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int Count { get; set; }
@@ -21,6 +21,5 @@ namespace API.Helpers
             Count = count;
             Data = data;
         }
-        
     }
 }

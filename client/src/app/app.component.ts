@@ -9,12 +9,7 @@ import { BasketService } from './basket/basket.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    NavBarComponent,
-    SectionHeaderComponent,
-    NgxSpinnerModule,
-  ],
+  imports: [RouterOutlet, NavBarComponent, SectionHeaderComponent, NgxSpinnerModule],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { BasketService } from '@/app/basket/basket.service';
 import { CurrencyPipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IProduct } from '@shared/models/product';
 
@@ -10,10 +10,8 @@ import { IProduct } from '@shared/models/product';
   imports: [CurrencyPipe, RouterLink],
   templateUrl: './product-item.component.html',
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
   @Input({ required: true }) product: IProduct | undefined;
-
-  ngOnInit(): void {}
 
   constructor(private basketService: BasketService) {}
 

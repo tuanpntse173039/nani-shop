@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './checkout.component.html',
 })
-export class CheckoutComponent {
-
-}
+export class CheckoutComponent {}
