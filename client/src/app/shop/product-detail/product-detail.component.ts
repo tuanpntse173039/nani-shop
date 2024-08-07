@@ -1,3 +1,4 @@
+import { BasketService } from '@/app/basket/basket.service';
 import { IProduct } from '@/app/shared/models/product';
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -12,14 +13,21 @@ import { ShopService } from '../shop.service';
 })
 export class ProductDetailComponent implements OnInit {
   public product: IProduct | null = null;
-  public quantity: number = 0;
+  public quantity: number = 1;
 
   constructor(
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
+    private basketService: BasketService,
   ) {}
+
   ngOnInit(): void {
     this.loadProduct();
+  }
+
+  public addToCard() {
+    if (!this.product || this.quantity === 0) return;
+    this.basketService.addItemToBasket(this.product, this.quantity);
   }
 
   private loadProduct(): void {
@@ -37,5 +45,14 @@ export class ProductDetailComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  public incrementQuantity() {
+    this.quantity++;
+  }
+
+  public decrementQuantity() {
+    if (this.quantity === 1) return;
+    this.quantity--;
   }
 }

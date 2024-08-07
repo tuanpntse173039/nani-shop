@@ -1,4 +1,3 @@
-
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
   <div class="container flex flex-wrap items-center justify-between">
     <!-- LOGO -->
@@ -62,28 +61,32 @@
     <!-- ACTIONS -->
     <div class="flex">
       <button
+        [routerLink]="['/basket']"
         type="button"
         class="focus:ring-blue-1500 group relative mr-4 inline-flex items-center rounded-lg p-2 text-center text-sm font-medium text-gray-800 duration-300 ease-in focus:outline-none focus:ring-4"
       >
         <svg
-          class="h-8 w-8 text-gray-800 dark:text-white"
+          class="h-10 w-10 text-gray-800"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
+          width="24"
+          height="24"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
           <path
-            d="M17.133 12.632v-1.8a5.406 5.406 0 0 0-4.154-5.262.955.955 0 0 0 .021-.106V3.1a1 1 0 0 0-2 0v2.364a.955.955 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C6.867 15.018 5 15.614 5 16.807 5 17.4 5 18 5.538 18h12.924C19 18 19 17.4 19 16.807c0-1.193-1.867-1.789-1.867-4.175ZM8.823 19a3.453 3.453 0 0 0 6.354 0H8.823Z"
+            fill-rule="evenodd"
+            d="M4 4a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .979.796L7.939 6H19a1 1 0 0 1 .979 1.204l-1.25 6a1 1 0 0 1-.979.796H9.605l.208 1H17a3 3 0 1 1-2.83 2h-2.34a3 3 0 1 1-4.009-1.76L5.686 5H5a1 1 0 0 1-1-1Z"
+            clip-rule="evenodd"
           />
         </svg>
 
-        <span class="sr-only">Notifications</span>
+        <span class="sr-only">Basket</span>
         <div
           class="absolute -end-1 right-1 top-1 inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-red-500 text-xs font-bold text-white dark:border-gray-900"
+          *ngIf="basket$ | async as basket"
         >
-          20
+          {{ basket.items.length }}
         </div>
       </button>
       <button

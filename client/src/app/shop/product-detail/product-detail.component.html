@@ -102,7 +102,7 @@
           </div>
 
           <div class="mt-6 sm:mt-8 sm:flex sm:items-center sm:gap-4">
-            <span>
+            <span (click)="decrementQuantity()">
               <svg
                 class="h-6 w-6 cursor-pointer text-gray-800 dark:text-white"
                 aria-hidden="true"
@@ -119,8 +119,8 @@
                 />
               </svg>
             </span>
-            <p class="text-xl font-semibold text-blue-500">{{quantity}}</p>
-            <span>
+            <p class="text-xl font-semibold text-blue-500">{{ quantity }}</p>
+            <span (click)="incrementQuantity()">
               <svg
                 class="h-6 w-6 cursor-pointer text-gray-800 dark:text-white"
                 aria-hidden="true"
@@ -139,6 +139,7 @@
             </span>
             <a
               class="group relative me-2 cursor-pointer overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500"
+              (click)="addToCard()"
             >
               <span
                 class="relative inline-flex items-center justify-center rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0"

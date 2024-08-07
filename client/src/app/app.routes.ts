@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { BasketComponent } from '@app/basket/basket.component';
+import { CheckoutComponent } from '@app/checkout/checkout.component';
 import { HomeComponent } from '@app/home/home.component';
 import { NotFoundComponent } from '@core/not-found/not-found.component';
 import { ServerErrorComponent } from '@core/server-error/server-error.component';
@@ -26,6 +28,16 @@ export const routes: Routes = [
     loadChildren: () =>
       import('@shop/shop.routes').then((mod) => mod.SHOP_ROUTES),
     data: { breadcrumb: 'Shop' },
+  },
+  {
+    path: 'basket',
+    component: BasketComponent,
+    data: { breadcrumb: 'Basket' },
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    data: { breadcrumb: 'Checkout' },
   },
   { path: '**', redirectTo: '' },
 ];

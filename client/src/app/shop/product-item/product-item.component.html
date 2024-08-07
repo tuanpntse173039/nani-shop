@@ -3,6 +3,7 @@
     <div class="group relative h-72 w-full bg-slate-200 hover:bg-slate-100">
       <img class="mx-auto h-full" src="{{ product.pictureUrl }}" alt="" />
       <button
+        (click)="addItemToBasket()"
         type="submit"
         class="group absolute bottom-2 left-1/2 me-2 hidden -translate-x-1/2 overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-center text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:block"
       >

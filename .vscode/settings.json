@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["devkit", "Flowbite", "pacman", "primeng", "toastr"],
+  "cSpell.words": [
+    "devkit",
+    "Flowbite",
+    "pacman",
+    "primeng",
+    "toastr",
+    "uuidv"
+  ],
   "sqltools.connections": [
     {
       "previewLimit": 50,
