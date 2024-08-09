@@ -16,7 +16,7 @@ export class TestErrorComponent {
   private badRequestInfoEndpoint = 'products/1mot';
   private baseUrl: string = environment.baseUrl;
 
-  public errors: undefined;
+  public errors = [];
 
   constructor(private httpClient: HttpClient) {}
   public getBadRequestInfo(): void {
