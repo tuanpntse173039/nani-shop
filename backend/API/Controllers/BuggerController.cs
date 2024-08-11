@@ -1,6 +1,7 @@
 using API.Errors;
 using Core.Entities;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -12,6 +13,13 @@ namespace API.Controllers
         public BuggerController(StoreContext storeContext)
         {
             _storeContext = storeContext;
+        }
+
+        [HttpGet("test-auth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText()
+        {
+            return "Hello world";
         }
 
         [HttpGet("not-found")]

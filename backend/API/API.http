@@ -1,6 +1,10 @@
 @API_HostAddress = http://localhost:5009
 
-GET {{API_HostAddress}}/weatherforecast/
+###
+
+GET {{API_HostAddress}}/api/products?pageIndex=2&pageSize=2
 Accept: application/json
+@name RequestOne
 
 ###
+

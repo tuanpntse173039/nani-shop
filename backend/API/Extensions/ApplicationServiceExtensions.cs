@@ -3,6 +3,7 @@ using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Identity;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace API.Extensions
         )
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<ITokenService, TokenService>();
 
             //Auto mapper
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
