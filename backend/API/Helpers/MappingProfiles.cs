@@ -11,6 +11,10 @@ namespace API.Helpers
         {
             CreateMap<Address, AddressDTO>().ReverseMap();
 
+            CreateMap<CustomerBasket, CustomerBasketDTO>().ReverseMap();
+
+            CreateMap<BasketItem, BasketItemDTO>().ReverseMap();
+
             CreateMap<Product, ProductDTO>()
                 .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
                 .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))

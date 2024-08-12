@@ -1,9 +1,9 @@
 import { environment } from '@/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Basket, IBasket, IBasketItem, IBasketTotals } from '@shared/models/basket';
+import { IProduct } from '@shared/models/product';
 import { BehaviorSubject, map } from 'rxjs';
-import { IProduct } from '../shared/models/product';
-import { Basket, IBasket, IBasketItem, IBasketTotals } from './../shared/models/basket';
 
 @Injectable({
   providedIn: 'root',

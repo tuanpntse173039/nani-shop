@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { BasketService } from '@app/basket/basket.service';
 import { NavBarComponent } from '@core/nav-bar/nav-bar.component';
 import { SectionHeaderComponent } from '@core/section-header/section-header.component';
 import { initFlowbite } from 'flowbite';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { BasketService } from './basket/basket.service';
 
 @Component({
   selector: 'app-root',

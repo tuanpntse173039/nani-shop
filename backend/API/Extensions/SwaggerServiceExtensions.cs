@@ -18,6 +18,29 @@ namespace API.Extensions
                         Description = "An ASP.NET Core Web API for managing Nani shop",
                     }
                 );
+
+                var securitySchema = new OpenApiSecurityScheme
+                {
+                    Description = "JWT Auth Bearer Scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    BearerFormat = "JWT"
+                };
+
+                options.AddSecurityDefinition("Bearer", securitySchema);
+                var securityRequirement = new OpenApiSecurityRequirement
+                {
+                    { securitySchema, new[] { "Bearer" } }
+                };
+
+                options.AddSecurityRequirement(securityRequirement);
             });
 
             return services;
@@ -28,7 +51,7 @@ namespace API.Extensions
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Nani API v1");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Nani API");
             });
 
             return app;

@@ -1,5 +1,3 @@
-using System.Data;
-
 namespace Core.Entities
 {
     public class CustomerBasket

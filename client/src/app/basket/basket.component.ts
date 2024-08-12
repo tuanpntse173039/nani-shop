@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { BasketService } from '@app/basket/basket.service';
+import { OrderTotalsComponent } from '@shared/components/order-totals/order-totals.component';
 import { IBasket, IBasketItem } from '@shared/models/basket';
 import { Observable } from 'rxjs';
-import { OrderTotalsComponent } from '../shared/components/order-totals/order-totals.component';
-import { BasketService } from './basket.service';
 
 @Component({
   selector: 'app-basket',
@@ -15,7 +15,9 @@ import { BasketService } from './basket.service';
 })
 export class BasketComponent implements OnInit {
   public basket$: Observable<IBasket | null> | undefined;
+
   constructor(private basketService: BasketService) {}
+
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
   }

@@ -1,10 +1,11 @@
 @API_HostAddress = http://localhost:5009
 
-###
+### Products
 
-GET {{API_HostAddress}}/api/products?pageIndex=2&pageSize=2
+GET {{API_HostAddress}}/api/products? ageIndex=2&pageSize=4
 Accept: application/json
-@name RequestOne
+# @name Get all
+
 
 ###
 
