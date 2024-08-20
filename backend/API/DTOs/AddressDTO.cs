@@ -4,8 +4,6 @@ namespace API.DTOs
 {
     public class AddressDTO
     {
-        public string Id = string.Empty;
-
         [Required]
         public string FirstName { get; set; } = string.Empty;
 

@@ -20,6 +20,8 @@ namespace API.Extensions
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             //Auto mapper
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
@@ -44,7 +46,7 @@ namespace API.Extensions
                 opt.UseSqlite(config.GetConnectionString("IdentityConnection"))
             );
 
-            //Api Validation Error
+            //Api Validation Error -
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>

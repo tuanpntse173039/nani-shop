@@ -30,11 +30,24 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        private string GetAccessTokenFromHeader()
+        {
+            var authorizationHeader = HttpContext.Request.Headers["Authorization"];
+            var accessToken = string.Empty;
+            if (authorizationHeader.ToString().StartsWith("Bearer"))
+            {
+                accessToken = authorizationHeader.ToString().Substring("Bearer ".Length).Trim();
+            }
+            return accessToken;
+        }
+
         [Authorize]
         [HttpGet]
         public async Task<ActionResult<UserDTO>> GetCurrentUser()
         {
             var user = await _userManager.FindUserByEmailClaimsPrincipalAsync(HttpContext.User);
+
+            var accessToken = GetAccessTokenFromHeader();
 
             if (user == null || user.Email == null)
             {
@@ -45,14 +58,14 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 DisplayName = user.DisplayName,
-                Token = _tokenService.CreateToken(user)
+                Token = accessToken,
             };
         }
 
         [HttpGet("emailExists")]
         public async Task<ActionResult<bool>> CheckUserExist([FromQuery] string email)
         {
-            return await _userManager.FindByEmailAsync(email) == null;
+            return await _userManager.FindByEmailAsync(email) != null;
         }
 
         [Authorize]
@@ -82,7 +95,8 @@ namespace API.Controllers
             {
                 return BadRequest(new ApiResponse(400));
             }
-            user.Address = _mapper.Map<AddressDTO, Address>(addressDTO);
+            var address = _mapper.Map<AddressDTO, Address>(addressDTO);
+            user.Address = address;
 
             var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
@@ -123,7 +137,6 @@ namespace API.Controllers
         {
             if (CheckUserExist(registerDTO.Email).Result.Value)
             {
-                Console.WriteLine(">>>>Ahi");
                 return BadRequest(
                     new ApiValidationErrorResponse(new[] { "This email is already in use" })
                 );
