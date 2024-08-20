@@ -29,6 +29,11 @@ export const routes: Routes = [
     data: { breadcrumb: 'Shop' },
   },
   {
+    path: 'account',
+    loadChildren: () => import('@app/account/account.routes').then((mod) => mod.ACCOUNT_ROUTES),
+    data: { breadcrumb: { skip: true } },
+  },
+  {
     path: 'basket',
     component: BasketComponent,
     data: { breadcrumb: 'Basket' },

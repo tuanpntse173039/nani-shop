@@ -1,0 +1,54 @@
+<section class="">
+  <div class="mx-auto flex flex-col items-center justify-center px-6">
+    <!-- LOGO -->
+    <a [routerLink]="['']" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="https://www.reshot.com/preview-assets/icons/ZSM4LVY56G/beer-ZSM4LVY56G.svg" class="h-12" alt="Flowbite Logo" />
+
+      <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">Nani Shop</span>
+    </a>
+    <div class="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0">
+      <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">Sign in to your account</h1>
+        <form class="space-y-4 md:space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+          <app-text-input formControlName="email" [inputLabel]="'Email'"></app-text-input>
+          <app-text-input formControlName="password" [inputLabel]="'Password'" [inputType]="'password'"></app-text-input>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-start">
+              <div class="flex h-5 items-center">
+                <input
+                  id="remember"
+                  aria-describedby="remember"
+                  type="checkbox"
+                  class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                  required="" />
+              </div>
+              <div class="ml-3 text-sm">
+                <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+              </div>
+            </div>
+            <a class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
+          </div>
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="w-full rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Sign in
+          </button>
+          <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+            Don’t have an account yet?
+            <a [routerLink]="['/account/register']" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <!-- Checking form -->
+    <div class="mt-10">
+      <div>Form check: {{ loginForm.valid }}</div>
+      <div>Email check: {{ loginForm.get('email')?.valid }}</div>
+      <div>Email touched: {{ loginForm.get('email')?.touched }}</div>
+      <div>Email dirty: {{ loginForm.get('email')?.dirty }}</div>
+      <pre>{{ loginForm.value | json }}</pre>
+    </div>
+  </div>
+</section>

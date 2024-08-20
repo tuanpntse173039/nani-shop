@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Basket, IBasket, IBasketItem, IBasketTotals } from '@shared/models/basket';
 import { IProduct } from '@shared/models/product';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -77,16 +77,13 @@ export class BasketService {
     this.basketTotalSource.next({ shipping, subtotal, total });
   }
 
-  public getBasket(id: string) {
-    this.http
-      .get<IBasket>(`${this.basketEndpoint}?id=${id}`)
-      .pipe(
-        map((basket: IBasket) => {
-          this.basketSource.next(basket);
-          this.calculateTotal();
-        })
-      )
-      .subscribe();
+  public getBasket(id: string): Observable<void> {
+    return this.http.get<IBasket>(`${this.basketEndpoint}?id=${id}`).pipe(
+      map((basket: IBasket) => {
+        this.basketSource.next(basket);
+        this.calculateTotal();
+      })
+    );
   }
 
   public setBasket(basket: IBasket) {

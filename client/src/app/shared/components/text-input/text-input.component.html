@@ -1,0 +1,23 @@
+<div>
+  <label for="{{ inputLabel }}" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">{{ inputLabel }}</label>
+  <input
+    [ngClass]="
+      controlDir && controlDir.control && !controlDir.control.valid && controlDir.control.touched
+        ? !controlDir.control.valid
+          ? 'is-invalid'
+          : 'is-valid'
+        : null
+    "
+    [type]="inputType"
+    (input)="onInputChange()"
+    (blur)="onBlur()"
+    #input
+    id="{{ inputLabel }}"
+    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+    placeholder="{{ inputLabel }}" />
+  @if (controlDir && controlDir.control && !controlDir.control.valid && controlDir.control.touched) {
+    <!-- <span *ngIf="controlDir.control.hasError('required')">{{ inputLabel }} is required</span> -->
+    <span *ngIf="controlDir.control.errors && controlDir.control.errors['required']">{{ inputLabel }} is required</span>
+    <span *ngIf="controlDir.control.errors && controlDir.control.errors['pattern']">{{ inputLabel }} is invalid</span>
+  }
+</div>
