@@ -44,8 +44,8 @@
     </div>
     <!-- Checking form -->
     <div class="mt-10">
-      <div>Form check: {{ loginForm.valid }}</div>
-      <div>Email check: {{ loginForm.get('email')?.valid }}</div>
+      <div>Form check: {{ loginForm.status }}</div>
+      <div>Email check: {{ loginForm.get('email')?.status }}</div>
       <div>Email touched: {{ loginForm.get('email')?.touched }}</div>
       <div>Email dirty: {{ loginForm.get('email')?.dirty }}</div>
       <pre>{{ loginForm.value | json }}</pre>

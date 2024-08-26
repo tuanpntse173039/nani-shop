@@ -18,6 +18,8 @@ namespace API.Extensions
             IConfiguration config
         )
         {
+            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IOrderService, OrderService>();

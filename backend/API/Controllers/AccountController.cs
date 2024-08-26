@@ -7,6 +7,7 @@ using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace API.Controllers
 {
@@ -32,8 +33,8 @@ namespace API.Controllers
 
         private string GetAccessTokenFromHeader()
         {
-            var authorizationHeader = HttpContext.Request.Headers["Authorization"];
-            var accessToken = string.Empty;
+            StringValues authorizationHeader = HttpContext.Request.Headers["Authorization"];
+            string accessToken = string.Empty;
             if (authorizationHeader.ToString().StartsWith("Bearer"))
             {
                 accessToken = authorizationHeader.ToString().Substring("Bearer ".Length).Trim();
