@@ -23,13 +23,13 @@ public class CacheAttribute : Attribute, IAsyncActionFilter
             context.HttpContext.RequestServices.GetRequiredService<IResponseCacheService>();
 
         var cacheKey = GenerateCacheKeyFromRequest(context.HttpContext.Request);
-        var cacheRespone = await cacheService.GetCachedResponseAsync(cacheKey);
+        var cacheResponse = await cacheService.GetCachedResponseAsync(cacheKey);
 
-        if (!string.IsNullOrEmpty(cacheRespone))
+        if (!string.IsNullOrEmpty(cacheResponse))
         {
             var contentResult = new ContentResult
             {
-                Content = cacheRespone,
+                Content = cacheResponse,
                 ContentType = "application/json",
                 StatusCode = 200,
             };
